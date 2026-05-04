@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Untitled</title>
+    
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Fluxograma do Consentimento Jurídico</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --ink:    #1a1209;
+    --parch:  #f5efe0;
+    --cream:  #faf6ed;
+    --gold:   #b8860b;
+    --gold2:  #d4a017;
+    --rust:   #8b3a3a;
+    --sage:   #4a6741;
+    --slate:  #3d5a80;
+    --border: #c8b878;
+    --shadow: rgba(26,18,9,0.18);
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background-color: var(--parch);
+    background-image:
+      radial-gradient(ellipse at 10% 20%, rgba(184,134,11,0.07) 0%, transparent 50%),
+      radial-gradient(ellipse at 90% 80%, rgba(61,90,128,0.07) 0%, transparent 50%),
+      url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23b8860b' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    color: var(--ink);
+    min-height: 100vh;
+    padding: 0 0 80px;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--ink);
+    padding: 36px 24px 28px;
+    text-align: center;
+    border-bottom: 3px solid var(--gold);
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg, transparent, transparent 60px,
+      rgba(184,134,11,0.04) 60px, rgba(184,134,11,0.04) 61px
+    );
+  }
+  .header-tag {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    color: var(--gold2);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.6rem, 4vw, 2.6rem);
+    color: var(--parch);
+    line-height: 1.2;
+    position: relative;
+  }
+  header h1 em {
+    color: var(--gold2);
+    font-style: italic;
+  }
+  .header-sub {
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgba(245,239,224,0.6);
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── PROGRESS BAR ── */
+  #progress-wrap {
+    background: var(--ink);
+    padding: 0 24px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  #progress-bar-bg {
+    flex: 1;
+    height: 3px;
+    background: rgba(255,255,255,0.12);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  #progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold), var(--gold2));
+    border-radius: 2px;
+    transition: width 0.5s ease;
+    width: 0%;
+  }
+  #progress-label {
+    font-size: 10px;
+    color: var(--gold2);
+    letter-spacing: 1px;
+    white-space: nowrap;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 20px 0;
+  }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    box-shadow: 4px 4px 0 var(--border), 8px 8px 24px var(--shadow);
+    padding: 36px 40px;
+    position: relative;
+    animation: fadeUp 0.45s ease both;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ornament line */
+  .card::before {
+    content: '';
+    display: block;
+    width: 48px;
+    height: 2px;
+    background: var(--gold);
+    margin-bottom: 20px;
+  }
+
+  .epoch-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--ink);
+    color: var(--gold2);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 4px 12px;
+    border-radius: 1px;
+    margin-bottom: 20px;
+  }
+  .epoch-badge .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: var(--gold2);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+
+  .card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.2rem, 2.5vw, 1.65rem);
+    line-height: 1.3;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .card p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: #3a3020;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+
+  /* ── INFO BOX ── */
+  .infobox {
+    border-left: 3px solid var(--gold);
+    background: rgba(184,134,11,0.07);
+    padding: 14px 18px;
+    margin: 20px 0;
+    border-radius: 0 2px 2px 0;
+  }
+  .infobox .label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .infobox p {
+    font-size: 14px;
+    margin: 0;
+    color: #2a2010;
+    font-style: italic;
+  }
+
+  .infobox.penal { border-color: var(--rust); background: rgba(139,58,58,0.07); }
+  .infobox.penal .label { color: var(--rust); }
+  .infobox.civil  { border-color: var(--slate); background: rgba(61,90,128,0.07); }
+  .infobox.civil .label  { color: var(--slate); }
+  .infobox.bio   { border-color: var(--sage); background: rgba(74,103,65,0.07); }
+  .infobox.bio .label   { color: var(--sage); }
+
+  /* ── CHOICES ── */
+  .choices {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .choice-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: transparent;
+    border: 1.5px solid var(--border);
+    border-radius: 2px;
+    padding: 14px 18px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--ink);
+    position: relative;
+    overflow: hidden;
+  }
+  .choice-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gold);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .choice-btn:hover {
+    border-color: var(--gold);
+    box-shadow: 3px 3px 0 var(--border);
+    transform: translate(-1px, -1px);
+  }
+  .choice-btn:hover::after { opacity: 0.05; }
+  .choice-btn:active { transform: translate(0,0); box-shadow: none; }
+
+  .choice-num {
+    flex-shrink: 0;
+    width: 24px; height: 24px;
+    border: 1.5px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--gold);
+    margin-top: 1px;
+  }
+  .choice-text {
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+  }
+  .choice-text strong { font-weight: 500; display: block; margin-bottom: 2px; }
+  .choice-text span { font-size: 12px; color: #7a6a50; }
+
+  /* ── RESULT CARD ── */
+  .result-card {
+    border-top: 3px solid var(--gold);
+    margin-top: 28px;
+    padding-top: 24px;
+  }
+  .result-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--ink);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .result-title::before {
+    content: '⚖';
+    font-size: 1rem;
+  }
+
+  /* ── TAGS ── */
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 16px 0; }
+  .tag {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 1px;
+  }
+  .tag.civil   { background: rgba(61,90,128,0.12); color: var(--slate); border: 1px solid rgba(61,90,128,0.2); }
+  .tag.penal   { background: rgba(139,58,58,0.12); color: var(--rust); border: 1px solid rgba(139,58,58,0.2); }
+  .tag.bio     { background: rgba(74,103,65,0.12); color: var(--sage); border: 1px solid rgba(74,103,65,0.2); }
+  .tag.const   { background: rgba(184,134,11,0.12); color: var(--gold); border: 1px solid rgba(184,134,11,0.3); }
+
+  /* ── TIMELINE MINI ── */
+  .timeline-mini {
+    margin: 20px 0;
+    position: relative;
+    padding-left: 20px;
+  }
+  .timeline-mini::before {
+    content: '';
+    position: absolute;
+    left: 5px; top: 6px; bottom: 6px;
+    width: 1px;
+    background: var(--border);
+  }
+  .tl-item {
+    position: relative;
+    margin-bottom: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #3a3020;
+    padding-left: 14px;
+  }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -15px; top: 7px;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid var(--cream);
+    box-shadow: 0 0 0 1px var(--gold);
+  }
+  .tl-item .tl-year { font-weight: 500; color: var(--gold); margin-right: 6px; }
+
+  /* ── NAVIGATION ── */
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .btn-back {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: #7a6a50;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.2s;
+  }
+  .btn-back:hover { border-color: var(--ink); color: var(--ink); }
+
+  .btn-restart {
+    background: var(--ink);
+    border: none;
+    color: var(--gold2);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    padding: 10px 22px;
+    cursor: pointer;
+    border-radius: 1px;
+    transition: all 0.2s;
+  }
+  .btn-restart:hover { background: #2a2010; }
+
+  /* ── BREADCRUMB ── */
+  #breadcrumb {
+    font-size: 11px;
+    color: #9a8a70;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    align-items: center;
+    letter-spacing: 0.3px;
+  }
+  .bc-sep { opacity: 0.4; }
+
+  /* ── CITATION ── */
+  .citation {
+    font-size: 11px;
+    color: #9a8a70;
+    font-style: italic;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dashed var(--border);
+  }
+
+  /* ── FINAL SUMMARY ── */
+  .summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 14px;
+    margin: 20px 0;
+  }
+  .summary-item {
+    background: var(--parch);
+    border: 1px solid var(--border);
+    padding: 14px 16px;
+    border-radius: 1px;
+  }
+  .summary-item .si-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+    margin-bottom: 6px;
+  }
+  .summary-item .si-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.4;
+  }
+
+  @media (max-width: 540px) {
+    .card { padding: 24px 20px; }
+    .choices { gap: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-tag">Hermenêutica Jurídica · UFG · 2026</div>
+  <h1>O <em>Consentimento</em> através do Tempo</h1>
+  <p class="header-sub">Fluxograma interativo de decisão · Direito Civil, Penal e Biodireito</p>
+</header>
+
+<div id="progress-wrap">
+  <div id="progress-bar-bg"><div id="progress-bar-fill"></div></div>
+  <div id="progress-label">início</div>
+</div>
+
+<main>
+  <div id="breadcrumb"></div>
+  <div id="stage"></div>
+</main>
+
+<script>
+// ──────────────────────────────────────────────────────────────────────────────
+// DATA — Nós do fluxograma
+// ──────────────────────────────────────────────────────────────────────────────
+const nodes = {
+
+  // ── INÍCIO ────────────────────────────────────────────────────────────────
+  start: {
+    progress: 0,
+    badge: null,
+    title: "Em que época você se encontra?",
+    body: `<p>Bem-vindo ao fluxograma interativo sobre a evolução semântica do <strong>consentimento</strong> no Direito. Escolha uma época histórica para descobrir como o conceito era compreendido — e por quê.</p>
+    <p>Cada caminho revela um sistema jurídico diferente, com suas lógicas próprias sobre quem pode consentir, sobre o quê, e com quais efeitos.</p>`,
+    choices: [
+      { label: "Roma Antiga",       sub: "Séc. VI a.C. – Séc. VI d.C.", next: "roma" },
+      { label: "Idade Média",       sub: "Séc. V – Séc. XV", next: "medieval" },
+      { label: "Modernidade Liberal", sub: "Séc. XVII – XIX", next: "moderno" },
+      { label: "Séc. XX – Contemporâneo", sub: "Estado Social e Constitucionalismos", next: "contemporaneo" },
+    ]
+  },
+
+  // ── ROMA ─────────────────────────────────────────────────────────────────
+  roma: {
+    progress: 20,
+    badge: "Roma Antiga · Corpus Iuris Civilis",
+    title: "O consensus romano: técnico e hierarquizado",
+    body: `<p>No Direito Romano, o <em>consensus</em> derivava do latim <em>consentire</em> (cum + sentire — sentir em conjunto). Ele era o elemento central dos contratos consensuais codificados por Justiniano no <em>Corpus Iuris Civilis</em> (séc. VI d.C.).</p>
+    <p>O simples acordo de vontades bastava para criar obrigações — mas essa aparente abertura tinha um limite severo: somente homens livres e proprietários podiam consentir plenamente.</p>`,
+    infobox: { type: "civil", label: "Direito Civil", text: "Contratos consensuais: emptio venditio (compra e venda) e locatio conductio (locação) eram formados pelo puro acordo de vontades entre partes capazes." },
+    choices: [
+      { label: "Quem poderia consentir?", sub: "Capacidade jurídica em Roma", next: "roma_quem" },
+      { label: "E as mulheres e os escravos?", sub: "Exclusões estruturais do conceito", next: "roma_exclusao" },
+      { label: "Havia proteção contra vícios?", sub: "Erro, dolo e coação no Digesto", next: "roma_vicios" },
+    ]
+  },
+
+  roma_quem: {
+    progress: 30,
+    badge: "Roma Antiga · Capacidade",
+    title: "Só o cidadão romano pleno podia consentir",
+    body: `<p>Em Roma, a capacidade de consentir dependia do status: ser <em>sui iuris</em> (pessoa juridicamente autônoma), homem, livre e cidadão. O <em>paterfamilias</em> era o sujeito pleno de direito — todos os demais (filhos sob pátrio poder, esposas, escravos) estavam em posição de subordinação.</p>`,
+    infobox: { type: "default", label: "Contexto histórico", text: "O consentimento era, portanto, um privilégio de classe e gênero — não um atributo universal da pessoa humana." },
+    timeline: [
+      { year: "Séc. VI a.C.", text: "Lei das XII Tábuas: primeiras regras sobre contratos verbais." },
+      { year: "Séc. I a.C.", text: "Cícero trata o consensus como fundamento da obrigação contratual." },
+      { year: "Séc. VI d.C.", text: "Corpus Iuris Civilis de Justiniano codifica os contratos consensuais." },
+    ],
+    choices: [
+      { label: "Voltar para Roma", sub: "Ver outros aspectos", next: "roma" },
+      { label: "Comparar com outra época", sub: "Ir para Modernidade Liberal", next: "moderno" },
+    ]
+  },
+
+  roma_exclusao: {
+    progress: 30,
+    badge: "Roma Antiga · Exclusões",
+    title: "Escravos, mulheres e tutelados: sem voz jurídica",
+    body: `<p>Escravos eram juridicamente <em>res</em> (coisas) — não podiam consentir porque não eram pessoas no sentido jurídico. Mulheres <em>sui iuris</em> tinham alguma capacidade, mas dependiam de tutores para atos importantes. Filhos sob pátrio poder não podiam contratar em nome próprio.</p>
+    <p>Essa exclusão não era vista como uma limitação do conceito de consentimento, mas como sua expressão natural em uma sociedade hierarquizada. O Direito simplesmente espelhava a ordem social.</p>`,
+    infobox: { type: "penal", label: "Reflexão hermenêutica", text: "Isso revela que o 'consentimento' nunca foi um conceito neutro: desde a origem, ele carregava marcas das estruturas de poder vigentes." },
+    choices: [
+      { label: "Voltar para Roma", sub: "", next: "roma" },
+      { label: "Ver como isso mudou", sub: "Ir para o século XX", next: "contemporaneo" },
+    ]
+  },
+
+  roma_vicios: {
+    progress: 30,
+    badge: "Roma Antiga · Vícios do Consentimento",
+    title: "Erro, dolo e coação já preocupavam os romanos",
+    body: `<p>O Digesto romano já reconhecia que o consentimento precisava ser <em>livre</em>. Três vícios o invalidavam:</p>
+    <p><strong>Erro (error):</strong> engano sobre elemento essencial do negócio. <strong>Dolo (dolus):</strong> indução fraudulenta ao erro. <strong>Coação (metus):</strong> ameaça grave que suprimia a liberdade de escolha.</p>
+    <p>Entretanto, a proteção era restrita: a coação de um credor sobre um devedor pobre raramente era reconhecida. A igualdade formal não existia.</p>`,
+    infobox: { type: "civil", label: "Herança para o Direito Brasileiro", text: "Essa tríade — erro, dolo, coação — foi herdada pelo Código Civil de 1916 (arts. 86–113) e pelo CC de 2002 (arts. 138–165), com acréscimo do estado de perigo e da lesão." },
+    choices: [
+      { label: "Voltar para Roma", sub: "", next: "roma" },
+      { label: "Ver como o CC 2002 expandiu isso", sub: "Modernidade ao contemporâneo", next: "vicios_modernos" },
+    ]
+  },
+
+  vicios_modernos: {
+    progress: 40,
+    badge: "Direito Civil Brasileiro · Vícios",
+    title: "Do CC/1916 ao CC/2002: novos vícios, nova lógica",
+    body: `<p>O Código Civil de 2002 ampliou o catálogo de vícios do consentimento para além da herança romana. Adicionou o <strong>estado de perigo</strong> (art. 156) e a <strong>lesão</strong> (art. 157), reconhecendo que um consentimento prestado sob pressão econômica severa também é juridicamente insuficiente.</p>
+    <p>Mais do que isso: incorporou a <strong>boa-fé objetiva</strong> (art. 422) e a <strong>função social do contrato</strong> (art. 421) como princípios capazes de limitar a autonomia privada mesmo quando o consentimento formal foi regularmente prestado.</p>`,
+    infobox: { type: "civil", label: "STJ — REsp 1.710.805/SP", text: "O Superior Tribunal de Justiça admitiu revisão de cláusulas contratadas formalmente por força da onerosidade excessiva superveniente, demonstrando que o consentimento passado não imuniza o contrato de revisão futura." },
+    citation: "TEPEDINO; BARBOZA; MORAES, Código Civil Interpretado conforme a Constituição da República, 2011.",
+    choices: [
+      { label: "Ver o consentimento no direito penal", sub: "Crimes sexuais e autonomia", next: "penal_civil" },
+      { label: "Ver o consentimento informado", sub: "Biodireito", next: "bio" },
+    ]
+  },
+
+  // ── MEDIEVAL ─────────────────────────────────────────────────────────────
+  medieval: {
+    progress: 20,
+    badge: "Idade Média · Direito Canônico",
+    title: "O consentimento no casamento: entre fé e vontade",
+    body: `<p>Na Idade Média, o consentimento adquiriu uma dimensão que os romanos desconheciam: a teológica. O Direito Canônico, administrado pela Igreja Católica, tornou o <em>consensus</em> o elemento constitutivo do matrimônio.</p>
+    <p>O Papa Alexandre III (séc. XII) consolidou a doutrina: o casamento se formava pelo mútuo consentimento dos nubentes — não pela consumação sexual. Era um avanço: reconhecia que a vontade importava mais que o ato físico.</p>`,
+    infobox: { type: "default", label: "Escolástica jurídica", text: "Tomás de Aquino e Francisco Suárez associaram a validade dos atos humanos — inclusive jurídicos — à presença de uma vontade autônoma, livre de vícios. Sem vontade livre, não há ato moral nem jurídico válido." },
+    choices: [
+      { label: "O casamento sem consentimento era válido?", sub: "Coação e casamentos forçados", next: "medieval_casamento" },
+      { label: "E o consentimento das mulheres?", sub: "Autonomia feminina no período", next: "medieval_mulher" },
+      { label: "Como isso influenciou o Direito moderno?", sub: "Herança da escolástica", next: "moderno" },
+    ]
+  },
+
+  medieval_casamento: {
+    progress: 30,
+    badge: "Idade Média · Matrimônio",
+    title: "Casamentos forçados: teoria versus prática",
+    body: `<p>Em teoria, o Direito Canônico exigia o consentimento livre dos dois cônjuges. O Concílio de Trento (1545–1563) até formalizou testemunhas e o pároco como requisitos para evitar casamentos clandestinos.</p>
+    <p>Na prática, porém, o consentimento da noiva frequentemente era substituído pelo do pai ou tutor. A pressão familiar, econômica e social tornava o "sim" da mulher muitas vezes apenas formal. O Direito não dispunha de mecanismos reais para verificar a liberdade interna da vontade.</p>`,
+    infobox: { type: "penal", label: "Tensão semântica", text: "Aqui já aparece a tensão que marcará toda a história do consentimento: a diferença entre o consentimento formal (o que foi dito) e o consentimento real (o que foi livremente querido)." },
+    choices: [
+      { label: "Voltar para a Idade Média", sub: "", next: "medieval" },
+      { label: "Ver como essa tensão se resolve hoje", sub: "Séc. XX", next: "contemporaneo" },
+    ]
+  },
+
+  medieval_mulher: {
+    progress: 30,
+    badge: "Idade Média · Gênero e Capacidade",
+    title: "A vontade feminina: reconhecida, mas subordinada",
+    body: `<p>O Direito Canônico medieval reconhecia que a mulher tinha vontade — e que seu consentimento era necessário para o casamento. Isso a distinguia juridicamente da escrava romana, que não tinha vontade juridicamente relevante.</p>
+    <p>Porém, em praticamente todas as outras esferas, a mulher casada estava sob a <em>auctoritas</em> do marido. Ela não podia celebrar contratos, adquirir bens ou litigar sem autorização. Seu consentimento era reconhecido na entrada do casamento, e apagado dentro dele.</p>`,
+    choices: [
+      { label: "Voltar", sub: "", next: "medieval" },
+      { label: "Ver a evolução para o Direito contemporâneo", sub: "", next: "contemporaneo" },
+    ]
+  },
+
+  // ── MODERNO ──────────────────────────────────────────────────────────────
+  moderno: {
+    progress: 20,
+    badge: "Modernidade Liberal · Séc. XVII–XIX",
+    title: "Autonomia da vontade: o consentimento como princípio universal",
+    body: `<p>As revoluções liberais dos séculos XVII e XVIII transformaram o consentimento em um princípio filosófico e político central. <strong>Locke</strong> afirmou que o governo legítimo depende do consentimento dos governados. <strong>Kant</strong> defendeu que a moralidade exige tratar o outro como fim em si mesmo — o que pressupõe respeitar sua capacidade de consentir.</p>
+    <p>No Direito, isso se traduziu no <strong>Código Napoleônico de 1804</strong>: o contrato passou a ser definido como o acordo livre de vontades, e o consentimento tornou-se seu requisito fundamental de validade.</p>`,
+    infobox: { type: "civil", label: "Código Civil Brasileiro de 1916", text: "Fortemente influenciado pelo Code Napoléon, o CC/1916 consagrou a autonomia da vontade como princípio absoluto. A intervenção estatal para revisar contratos era exceção raramente admitida." },
+    choices: [
+      { label: "O consentimento era realmente livre?", sub: "A ilusão da igualdade formal", next: "moderno_ilusao" },
+      { label: "Quais eram os vícios reconhecidos?", sub: "Erro, dolo e coação no liberalismo", next: "roma_vicios" },
+      { label: "Como o consentimento penal era tratado?", sub: "Crimes e autonomia no séc. XIX", next: "moderno_penal" },
+    ]
+  },
+
+  moderno_ilusao: {
+    progress: 35,
+    badge: "Modernidade Liberal · Crítica",
+    title: "Igualdade formal, desigualdade real",
+    body: `<p>O liberalismo proclamou que todos os indivíduos eram iguais diante da lei e livres para consentir. Mas essa igualdade era apenas formal: ela não considerava as profundas assimetrias reais entre os contratantes.</p>
+    <p>O operário que "consentia" em trabalhar 14 horas por salário miserável; a mulher que "consentia" na venda do imóvel sob pressão do marido; o camponês que "consentia" em contratos agrários leoninos — todos eram, formalmente, livres. Substancialmente, sua liberdade era inexistente.</p>`,
+    infobox: { type: "penal", label: "Hermenêutica crítica", text: "É essa tensão entre forma e substância que vai impulsionar toda a transformação do conceito de consentimento no século XX. A pergunta deixa de ser 'o que foi dito?' e passa a ser 'em que condições foi dito?'" },
+    citation: "PERLINGIERI, Perfis do Direito Civil, 2007.",
+    choices: [
+      { label: "Ver como o séc. XX corrigiu isso", sub: "Constitucionalismo e dignidade", next: "contemporaneo" },
+      { label: "Ver o CDC como ruptura", sub: "Consentimento no consumo", next: "cdc" },
+    ]
+  },
+
+  moderno_penal: {
+    progress: 35,
+    badge: "Séc. XIX · Direito Penal",
+    title: "O consentimento penal no liberalismo: a resistência como prova",
+    body: `<p>No direito penal oitocentista, o consentimento da vítima operava como excludente de crime apenas em situações muito restritas. Nos crimes sexuais, o entendimento dominante era de que a ausência de consentimento precisava ser <em>demonstrada</em> pela vítima — e a prova aceita era a resistência física.</p>
+    <p>Sem marcas de resistência, presumia-se o consentimento. Essa lógica colocava o ônus inteiramente sobre quem sofria a violência e refletia uma sociedade que desconfiava estruturalmente da palavra das mulheres.</p>`,
+    infobox: { type: "penal", label: "Implicação hermenêutica", text: "O consentimento, nesse contexto, não era verificado — era presumido diante da ausência de resistência visível. O 'não' precisava ser gritado e marcado no corpo." },
+    choices: [
+      { label: "Como isso mudou no séc. XX?", sub: "Lei 12.015/2009 e além", next: "penal_atual" },
+      { label: "Comparar com o direito civil do mesmo período", sub: "", next: "moderno" },
+    ]
+  },
+
+  // ── CONTEMPORÂNEO ────────────────────────────────────────────────────────
+  contemporaneo: {
+    progress: 20,
+    badge: "Séc. XX–XXI · Constitucionalismo",
+    title: "Consentimento substancial: dignidade e autonomia real",
+    body: `<p>O século XX marcou uma ruptura com o voluntarismo liberal. A emergência do Estado Social, a constitucionalização do Direito e o reconhecimento da <strong>dignidade da pessoa humana</strong> como valor fundante das ordens jurídicas exigiram uma nova compreensão do consentimento.</p>
+    <p>Não basta mais que alguém tenha dito sim. É necessário verificar <em>em que condições</em> esse sim foi prestado. O consentimento passou a exigir: <strong>liberdade real</strong>, <strong>informação adequada</strong> e <strong>capacidade efetiva de compreensão</strong>.</p>`,
+    infobox: { type: "const", label: "CF/88 — Art. 1º, III", text: "A dignidade da pessoa humana como fundamento da República funciona como vetor interpretativo de todos os conceitos jurídicos — inclusive o consentimento." },
+    choices: [
+      { label: "Consentimento nos contratos", sub: "CDC e boa-fé objetiva", next: "cdc" },
+      { label: "Consentimento nos crimes sexuais", sub: "Da resistência ao sim afirmativo", next: "penal_atual" },
+      { label: "Consentimento informado", sub: "Biodireito e autonomia do paciente", next: "bio" },
+      { label: "Eficácia horizontal dos direitos fundamentais", sub: "Constitucionalização do privado", next: "const_privado" },
+    ]
+  },
+
+  cdc: {
+    progress: 45,
+    badge: "Direito do Consumidor · Lei 8.078/1990",
+    title: "O CDC e a insuficiência do consentimento formal",
+    body: `<p>O Código de Defesa do Consumidor (1990) foi uma ruptura legislativa explícita com o voluntarismo liberal. Seu ponto de partida: o consumidor é estruturalmente vulnerável. Portanto, seu consentimento, quando prestado sem informação adequada, é juridicamente insuficiente.</p>
+    <p>Consequências práticas: nulidade de pleno direito de cláusulas abusivas (art. 51), mesmo que aceitas formalmente; direito de arrependimento em 7 dias para compras fora do estabelecimento (art. 49); interpretação mais favorável ao consumidor em caso de dúvida (art. 47).</p>`,
+    infobox: { type: "civil", label: "STJ · REsp 1.710.805/SP", text: "O STJ reconheceu a possibilidade de revisão de cláusulas contratadas formalmente com base na onerosidade excessiva superveniente — o consentimento passado não cristaliza o contrato para sempre." },
+    tags: ["civil", "const"],
+    citation: "BRASIL. Lei n.º 8.078/1990; STJ, REsp 1.710.805/SP, rel. Min. Nancy Andrighi, 2018.",
+    choices: [
+      { label: "E no Código Civil de 2002?", sub: "Boa-fé e função social", next: "vicios_modernos" },
+      { label: "Ver o consentimento nos crimes sexuais", sub: "", next: "penal_atual" },
+      { label: "Ver o consentimento informado", sub: "", next: "bio" },
+    ]
+  },
+
+  penal_civil: {
+    progress: 40,
+    badge: "Bifurcação · Civil vs. Penal",
+    title: "O consentimento opera de formas diferentes no Civil e no Penal",
+    body: `<p>No <strong>Direito Civil</strong>, o consentimento é elemento de <em>validade</em> dos negócios jurídicos: sem ele (ou com ele viciado), o ato é anulável. O foco está na autonomia privada.</p>
+    <p>No <strong>Direito Penal</strong>, o consentimento da vítima pode funcionar como <em>excludente de tipicidade</em> (nos crimes contra bens disponíveis) ou como <em>elemento constitutivo do crime</em> (nos crimes sexuais, em que sua ausência define o delito). O foco está na proteção de bens jurídicos indisponíveis.</p>`,
+    choices: [
+      { label: "Explorar o consentimento civil", sub: "CDC e Código Civil", next: "cdc" },
+      { label: "Explorar o consentimento penal", sub: "Crimes sexuais", next: "penal_atual" },
+    ]
+  },
+
+  penal_atual: {
+    progress: 45,
+    badge: "Direito Penal · Lei 12.015/2009",
+    title: "Dos crimes contra os 'costumes' aos crimes contra a 'dignidade sexual'",
+    body: `<p>Até 2009, o Código Penal brasileiro reunia os crimes sexuais sob o título "crimes contra os costumes" — uma designação que revela muito sobre a perspectiva de proteção: menos da pessoa, mais da ordem moral.</p>
+    <p>A <strong>Lei n.º 12.015/2009</strong> renomeou o título para "crimes contra a dignidade sexual" e unificou estupro e atentado violento ao pudor. A mudança semântica é hermeneuticamente relevante: o sujeito protegido passa a ser a pessoa e sua autonomia, não a moral social.</p>`,
+    infobox: { type: "penal", label: "Deslocamento do foco", text: "Antes: a vítima precisava demonstrar resistência. Depois: a ausência de consentimento é o elemento constitutivo do crime — independentemente de resistência física." },
+    choices: [
+      { label: "O que é o consentimento afirmativo?", sub: "Debate atual na doutrina", next: "penal_afirmativo" },
+      { label: "E a jurisprudência histórica?", sub: "O problema da 'resistência'", next: "moderno_penal" },
+      { label: "Ver o consentimento no biodireito", sub: "", next: "bio" },
+    ]
+  },
+
+  penal_afirmativo: {
+    progress: 60,
+    badge: "Direito Penal · Fronteira do Debate",
+    title: "Consentimento afirmativo: o 'sim' precisa ser dito",
+    body: `<p>A doutrina e a jurisprudência mais recentes, influenciadas por reformas legislativas na <strong>Espanha</strong> (Lei Orgânica 10/2022 — "só sim é sim"), <strong>Suécia</strong> e <strong>Alemanha</strong>, avançam para o modelo do <em>consentimento afirmativo</em>.</p>
+    <p>A ideia central: não basta a ausência de recusa. Para que a relação sexual seja lícita, é necessária a <em>manifestação positiva</em> de concordância. Silêncio, passividade ou ausência de "não" não equivalem a consentimento.</p>
+    <p>No Brasil, esse debate está em curso na academia jurídica e começa a aparecer em decisões de instâncias inferiores, embora ainda não consolidado pelo STJ ou STF.</p>`,
+    infobox: { type: "penal", label: "Reflexão hermenêutica", text: "Essa evolução mostra que o consentimento no direito penal sexual não é uma categoria técnica estável — ela responde a transformações culturais e políticas impulsionadas pelo movimento feminista." },
+    tags: ["penal", "const"],
+    citation: "BRASIL. Lei n.º 12.015/2009; Espanha, Ley Orgánica 10/2022.",
+    choices: [
+      { label: "Comparar com o consentimento civil", sub: "CDC e autonomia contratual", next: "cdc" },
+      { label: "Ver o consentimento informado", sub: "Biodireito", next: "bio" },
+      { label: "Ir para análise hermenêutica final", sub: "Síntese do percurso", next: "hermeneutica" },
+    ]
+  },
+
+  bio: {
+    progress: 45,
+    badge: "Biodireito · Autonomia do Paciente",
+    title: "Consentimento informado: o corpo como domínio da pessoa",
+    body: `<p>O <em>consentimento informado</em> (informed consent) surgiu no Direito norte-americano a partir do caso <strong>Schloendorff v. Society of New York Hospital</strong> (EUA, 1914). O juiz Benjamin Cardozo afirmou um princípio que ecoaria por décadas: <em>"todo ser humano adulto e são tem o direito de determinar o que será feito com seu corpo."</em></p>
+    <p>Esse instituto impõe ao médico o dever de explicar — de forma clara e compreensível — o diagnóstico, os procedimentos propostos, os riscos, as alternativas e as consequências da recusa, <em>antes</em> de obter a concordância do paciente.</p>`,
+    infobox: { type: "bio", label: "Regulação brasileira", text: "Código de Ética Médica + Resolução CFM n.º 1.931/2009. Fundamento constitucional: art. 1.º, III (dignidade) e art. 5.º, II (liberdade), CF/88." },
+    choices: [
+      { label: "E se o paciente recusar o tratamento?", sub: "Autonomia vs. vida", next: "bio_recusa" },
+      { label: "O STJ responsabilizou médicos por isso?", sub: "Jurisprudência sobre CI", next: "bio_stj" },
+      { label: "Comparar com o consentimento contratual", sub: "Semelhanças e diferenças", next: "bio_vs_civil" },
+    ]
+  },
+
+  bio_recusa: {
+    progress: 60,
+    badge: "Biodireito · Recusa de Tratamento",
+    title: "O direito de dizer não: autonomia versus paternalismo",
+    body: `<p>O reconhecimento do consentimento informado implica, necessariamente, reconhecer também o <strong>direito de recusar</strong> o tratamento. Uma pessoa capaz pode recusar procedimentos médicos, inclusive vitais, desde que o faça de forma consciente e informada.</p>
+    <p>O CFM reconhece esse direito (Resolução 1.995/2012 — diretivas antecipadas de vontade). A tensão com o princípio da beneficência médica é real, mas a orientação contemporânea privilegia a autonomia: o paternalismo benevolente — "faço isso por seu bem, mesmo sem seu consentimento" — é juridicamente inadmissível.</p>`,
+    infobox: { type: "bio", label: "Caso emblemático", text: "Testemunhas de Jeová que recusam transfusão de sangue geraram jurisprudência sobre os limites da autonomia, especialmente quando há menores envolvidos." },
+    choices: [
+      { label: "Voltar para biodireito", sub: "", next: "bio" },
+      { label: "Ir para a síntese hermenêutica", sub: "", next: "hermeneutica" },
+    ]
+  },
+
+  bio_stj: {
+    progress: 60,
+    badge: "Biodireito · Jurisprudência STJ",
+    title: "Responsabilidade médica por falta de consentimento informado",
+    body: `<p>O Superior Tribunal de Justiça consolidou entendimento de que o médico pode ser responsabilizado civilmente pela <strong>ausência ou insuficiência do consentimento informado</strong>, mesmo quando o procedimento técnico foi correto e bem-sucedido.</p>
+    <p>A lógica: o dano não é apenas físico — a violação da autonomia do paciente, em si, é um dano jurídico. A pessoa tem direito de conhecer os riscos e de decidir se quer assumi-los, mesmo que a decisão pareça irracional ao médico.</p>`,
+    infobox: { type: "bio", label: "Implicação prática", text: "Um paciente que sofre complicação prevista e informada não tem direito à indenização. Um paciente que sofre a mesma complicação sem ter sido informado, sim — mesmo que o médico tenha agido corretamente." },
+    citation: "STJ, AgInt no AREsp 1.466.609/SP; STJ, REsp 1.540.580/DF.",
+    choices: [
+      { label: "Voltar para biodireito", sub: "", next: "bio" },
+      { label: "Ir para a análise hermenêutica", sub: "", next: "hermeneutica" },
+    ]
+  },
+
+  bio_vs_civil: {
+    progress: 55,
+    badge: "Comparativo · Civil × Biodireito",
+    title: "Consentimento contratual vs. consentimento informado: semelhanças",
+    body: `<p>Tanto no direito contratual quanto no biodireito, o consentimento contemporâneo exige as mesmas três condições:</p>
+    <p><strong>1. Liberdade:</strong> ausência de coação, pressão desproporcional ou estado de necessidade. <strong>2. Informação:</strong> clareza e completude sobre o objeto do consentimento. <strong>3. Capacidade:</strong> aptidão cognitiva e volitiva real para compreender e decidir.</p>
+    <p>A diferença está no contexto: no Direito Civil, o consentimento opera sobre bens e obrigações; no biodireito, opera sobre o próprio corpo e a saúde — o que lhe confere uma intensidade ética adicional.</p>`,
+    tags: ["civil", "bio", "const"],
+    choices: [
+      { label: "Ver a síntese hermenêutica", sub: "Fechar o percurso", next: "hermeneutica" },
+      { label: "Ver mais sobre biodireito", sub: "", next: "bio" },
+    ]
+  },
+
+  const_privado: {
+    progress: 40,
+    badge: "Constitucionalização do Direito Privado",
+    title: "Eficácia horizontal: direitos fundamentais entre particulares",
+    body: `<p>A teoria da eficácia horizontal dos direitos fundamentais — desenvolvida na Alemanha (Drittwirkung) e incorporada pela doutrina e jurisprudência brasileiras — afirma que os direitos fundamentais não vinculam apenas o Estado, mas também as relações entre particulares.</p>
+    <p>No que tange ao consentimento: a dignidade da pessoa humana (art. 1.º, III, CF/88) opera como vetor interpretativo de todos os negócios jurídicos. Um contrato que viola a dignidade — mesmo com consentimento formal de ambas as partes — é inválido.</p>`,
+    infobox: { type: "const", label: "Exemplo concreto", text: "Cláusulas de não-concorrência abusivas, contratos que submetem empregados a condições degradantes, ou cláusulas de arbitragem que impedem o acesso à justiça podem ser nulas por violação de direitos fundamentais — independentemente do consentimento formal." },
+    citation: "PERLINGIERI, Perfis do Direito Civil, 2007; TEPEDINO et al., 2011.",
+    choices: [
+      { label: "Ver o consentimento no CDC", sub: "", next: "cdc" },
+      { label: "Ver a síntese hermenêutica", sub: "", next: "hermeneutica" },
+    ]
+  },
+
+  // ── ANÁLISE HERMENÊUTICA ─────────────────────────────────────────────────
+  hermeneutica: {
+    progress: 80,
+    badge: "Análise Hermenêutica · Síntese",
+    title: "Por que o sentido muda? Gadamer e a interpretação histórica",
+    body: `<p>Hans-Georg Gadamer, em <em>Verdade e Método</em> (1960), demonstrou que todo ato de interpretação é historicamente situado. O intérprete não acessa o texto a partir de um ponto neutro: ele o lê a partir de um <em>horizonte</em> de pré-compreensões moldado por sua época.</p>
+    <p>O jurista que interpreta "consentimento" hoje o faz a partir de um horizonte que inclui a CF/88, o CDC, os movimentos pelos direitos das mulheres e dos pacientes. O jurista do século XIX, diante do mesmo enunciado legal, chegaria a conclusões radicalmente diferentes — não por incompetência, mas porque seu horizonte era outro.</p>`,
+    infobox: { type: "default", label: "Mutação normativa", text: "O art. 138 do CC/2002 (erro como vício do consentimento) usa linguagem similar ao CC/1916 — mas o que conta como erro juridicamente relevante hoje é muito mais amplo. A palavra permanece; o sentido se renova." },
+    choices: [
+      { label: "Ver o resumo completo do percurso", sub: "Síntese de todas as épocas", next: "final" },
+      { label: "Recomeçar o fluxograma", sub: "Escolher outra época", next: "start" },
+    ]
+  },
+
+  // ── FINAL ────────────────────────────────────────────────────────────────
+  final: {
+    progress: 100,
+    badge: "Conclusão · Síntese Hermenêutica",
+    title: "A evolução semântica do consentimento: um campo em permanente reconstrução",
+    body: `<p>Ao percorrer esse fluxograma, você acompanhou a transformação de um único conceito jurídico ao longo de mais de dois mil anos. O consentimento não é — e nunca foi — uma categoria neutra e universal. Cada época o moldou segundo suas estruturas de poder, seus valores e suas lutas.</p>`,
+    summary: [
+      { label: "Roma Antiga", val: "Técnico e hierarquizado: só o cidadão livre podia consentir." },
+      { label: "Idade Média", val: "Teológico e matrimonial: vontade reconhecida, mas subordinada." },
+      { label: "Séc. XVII–XIX", val: "Voluntarista e formal: igualdade proclamada, desigualdade real." },
+      { label: "Séc. XX–XXI", val: "Substancial e constitucional: liberdade real + informação + dignidade." },
+    ],
+    tags: ["civil", "penal", "bio", "const"],
+    citation: "GADAMER, Verdade e Método, 2015; MAXIMILIANO, Hermenêutica e Aplicação do Direito, 2017.",
+    isFinal: true,
+  },
+};
+
+// ──────────────────────────────────────────────────────────────────────────────
+// ENGINE
+// ──────────────────────────────────────────────────────────────────────────────
+let history = [];
+let current = 'start';
+
+function breadcrumbLabel(id) {
+  const labels = {
+    start:'Início', roma:'Roma Antiga', medieval:'Idade Média',
+    moderno:'Modernidade Liberal', contemporaneo:'Contemporâneo',
+    cdc:'Direito do Consumidor', penal_atual:'Direito Penal',
+    bio:'Biodireito', hermeneutica:'Hermenêutica', final:'Conclusão',
+  };
+  return labels[id] || id;
+}
+
+function render(nodeId) {
+  const node = nodes[nodeId];
+  if (!node) return;
+
+  // progress
+  const fill = document.getElementById('progress-bar-fill');
+  const label = document.getElementById('progress-label');
+  fill.style.width = node.progress + '%';
+  const labels2 = {0:'início',20:'escolhendo época',30:'aprofundando',40:'comparando',45:'detalhes',55:'síntese parcial',60:'análise',80:'hermenêutica',100:'conclusão'};
+  label.textContent = labels2[node.progress] || node.progress + '%';
+
+  // breadcrumb
+  const bc = document.getElementById('breadcrumb');
+  const crumbs = [...history, nodeId].map((id, i, arr) => {
+    if (i === arr.length - 1) return `<span style="color:var(--gold);font-weight:500">${breadcrumbLabel(id)}</span>`;
+    return `<span>${breadcrumbLabel(id)}</span>`;
+  });
+  bc.innerHTML = crumbs.join('<span class="bc-sep"> › </span>');
+
+  // build card HTML
+  let html = '<div class="card">';
+
+  if (node.badge) {
+    html += `<div class="epoch-badge"><span class="dot"></span>${node.badge}</div>`;
+  }
+
+  html += `<h2>${node.title}</h2>`;
+  html += node.body;
+
+  if (node.infobox) {
+    html += `<div class="infobox ${node.infobox.type||''}"><div class="label">${node.infobox.label}</div><p>${node.infobox.text}</p></div>`;
+  }
+
+  if (node.timeline) {
+    html += '<div class="timeline-mini">';
+    node.timeline.forEach(t => {
+      html += `<div class="tl-item"><span class="tl-year">${t.year}</span>${t.text}</div>`;
+    });
+    html += '</div>';
+  }
+
+  if (node.tags) {
+    html += '<div class="tags">';
+    node.tags.forEach(t => { html += `<span class="tag ${t}">${{civil:'Dir. Civil',penal:'Dir. Penal',bio:'Biodireito',const:'Constitucional'}[t]||t}</span>`; });
+    html += '</div>';
+  }
+
+  if (node.summary) {
+    html += '<div class="summary-grid">';
+    node.summary.forEach(s => {
+      html += `<div class="summary-item"><div class="si-label">${s.label}</div><div class="si-val">${s.val}</div></div>`;
+    });
+    html += '</div>';
+  }
+
+  if (node.citation) {
+    html += `<div class="citation">📚 ${node.citation}</div>`;
+  }
+
+  // choices or final buttons
+  if (node.choices) {
+    html += '<div class="choices">';
+    node.choices.forEach((c, i) => {
+      html += `<button class="choice-btn" onclick="go('${c.next}')">
+        <span class="choice-num">${i+1}</span>
+        <span class="choice-text"><strong>${c.label}</strong><span>${c.sub||''}</span></span>
+      </button>`;
+    });
+    html += '</div>';
+  }
+
+  // nav row
+  html += '<div class="nav-row">';
+  if (history.length > 0) {
+    html += `<button class="btn-back" onclick="goBack()">← Voltar</button>`;
+  } else {
+    html += '<span></span>';
+  }
+  if (node.isFinal || nodeId === 'hermeneutica') {
+    html += `<button class="btn-restart" onclick="restart()">↺ Recomeçar</button>`;
+  }
+  html += '</div>';
+
+  html += '</div>';
+
+  const stage = document.getElementById('stage');
+  stage.innerHTML = html;
+  stage.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function go(nodeId) {
+  history.push(current);
+  current = nodeId;
+  render(nodeId);
+}
+
+function goBack() {
+  if (history.length === 0) return;
+  current = history.pop();
+  render(current);
+}
+
+function restart() {
+  history = [];
+  current = 'start';
+  render('start');
+}
+
+// init
+render('start');
+</script>
+</body>
+</html>
+    
+  </body>
+  
+</html>
